@@ -598,10 +598,10 @@ func addGoAndRustBuildpacks(config *builder.Config) {
 		{
 			ModuleInfo: dist.ModuleInfo{
 				ID:      "dev.knative-extensions.go",
-				Version: "0.0.6",
+				Version: "0.0.7",
 			},
 			ImageOrURI: dist.ImageOrURI{
-				BuildpackURI: dist.BuildpackURI{URI: "ghcr.io/boson-project/go-function-buildpack:0.0.6"},
+				BuildpackURI: dist.BuildpackURI{URI: "ghcr.io/jgnoguer/faas-go-bp:v0.10.0"},
 			},
 		},
 	}
