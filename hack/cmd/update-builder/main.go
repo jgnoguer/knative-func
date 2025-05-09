@@ -584,6 +584,7 @@ func downloadBuilderToml(ctx context.Context, tarballUrl, builderTomlPath string
 
 // Adds custom Rust and Go-Function buildpacks to the builder.
 func addGoAndRustBuildpacks(config *builder.Config) {
+	fmt.Fprintln(os.Stderr, "------------------------------------------------- 0.0.7 -------------------")
 	config.Description += "\nAddendum: this is modified builder that also contains Rust and Func-Go buildpacks."
 	additionalBuildpacks := []builder.ModuleConfig{
 		{
