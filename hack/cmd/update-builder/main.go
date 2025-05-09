@@ -602,7 +602,7 @@ func addGoAndRustBuildpacks(config *builder.Config) {
 				Version: "0.0.7",
 			},
 			ImageOrURI: dist.ImageOrURI{
-				BuildpackURI: dist.BuildpackURI{URI: "ghcr.io/jgnoguer/faas-go-bp:v0.10.0"},
+				BuildpackURI: dist.BuildpackURI{URI: "ghcr.io/jgnoguer/go-function-buildpack:0.0.7"},
 			},
 		},
 	}
