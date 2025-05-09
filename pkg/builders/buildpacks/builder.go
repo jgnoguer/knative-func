@@ -33,14 +33,14 @@ var DefaultTinyBuilder = "ghcr.io/jgnoguer/builder-jammy-tiny:latest"
 
 var (
 	DefaultBuilderImages = map[string]string{
-		"node":       DefaultBaseBuilder,
-		"nodejs":     DefaultBaseBuilder,
-		"typescript": DefaultBaseBuilder,
-		"go":         DefaultTinyBuilder,
-		"python":     DefaultBaseBuilder,
-		"quarkus":    DefaultTinyBuilder,
-		"rust":       DefaultBaseBuilder,
-		"springboot": DefaultBaseBuilder,
+		// "node":       DefaultBaseBuilder,
+		// "nodejs":     DefaultBaseBuilder,
+		// "typescript": DefaultBaseBuilder,
+		"go": DefaultTinyBuilder,
+		// "python":     DefaultBaseBuilder,
+		// "quarkus":    DefaultTinyBuilder,
+		// "rust":       DefaultBaseBuilder,
+		// "springboot": DefaultBaseBuilder,
 	}
 
 	// Ensure that all entries in this list are terminated with a trailing "/"
