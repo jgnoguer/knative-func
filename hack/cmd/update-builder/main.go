@@ -82,7 +82,7 @@ func main() {
 
 func buildBuilderImage(ctx context.Context, variant, version, arch, builderTomlPath string) (string, error) {
 
-	newBuilderImage := "ghcr.io/knative/builder-jammy-" + variant
+	newBuilderImage := "ghcr.io/jgnoguer/builder-jammy-" + variant
 	newBuilderImageTagged := newBuilderImage + ":" + version + "-" + arch
 
 	ref, err := name.ParseReference(newBuilderImageTagged)
@@ -281,7 +281,7 @@ func buildBuilderImageMultiArch(ctx context.Context, variant string) error {
 		remote.WithContext(ctx),
 	}
 
-	idxRef, err := name.ParseReference("ghcr.io/knative/builder-jammy-" + variant + ":" + release.GetName())
+	idxRef, err := name.ParseReference("ghcr.io/jgnoguer/builder-jammy-" + variant + ":" + release.GetName())
 	if err != nil {
 		return fmt.Errorf("cannot parse image index ref: %w", err)
 	}
@@ -353,7 +353,7 @@ func buildBuilderImageMultiArch(ctx context.Context, variant string) error {
 		return fmt.Errorf("cannot write image index: %w", err)
 	}
 
-	idxRef, err = name.ParseReference("ghcr.io/knative/builder-jammy-" + variant + ":latest")
+	idxRef, err = name.ParseReference("ghcr.io/jgnoguer/builder-jammy-" + variant + ":latest")
 	if err != nil {
 		return fmt.Errorf("cannot parse image index ref: %w", err)
 	}
