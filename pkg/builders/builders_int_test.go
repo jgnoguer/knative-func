@@ -242,7 +242,7 @@ USER 1001:0
 // Builds a tiny paketo builder that trusts to our self-signed certificate (see createCertificate).
 func buildPatcheBuildpackBuilder(ctx context.Context, t *testing.T, certDir string) string {
 	tag := "localhost:50000/builder-jammy-tin:test"
-	dockerfile := `FROM ghcr.io/knative/builder-jammy-tiny:latest
+	dockerfile := `FROM ghcr.io/jgnoguer/builder-jammy-tiny:latest
 COPY 712d4c9d.0 /etc/ssl/certs/
 `
 	return buildPatchedBuilder(ctx, t, tag, dockerfile, certDir)

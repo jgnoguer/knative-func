@@ -650,7 +650,7 @@ func updateJavaBuildpacks(ctx context.Context, builderConfig *builder.Config, ar
 	for _, entry := range builderConfig.Order {
 		bp := strings.TrimPrefix(entry.Group[0].ID, "paketo-buildpacks/")
 		if bp == "java" || bp == "java-native-image" {
-			img := "ghcr.io/knative/buildpacks/" + bp
+			img := "ghcr.io/jgnoguer/buildpacks/" + bp
 			err = buildBuildpackImage(ctx, buildpack{
 				repo:      bp,
 				version:   entry.Group[0].Version,
@@ -664,7 +664,7 @@ func updateJavaBuildpacks(ctx context.Context, builderConfig *builder.Config, ar
 			}
 			for i := range builderConfig.Buildpacks {
 				if strings.HasPrefix(builderConfig.Buildpacks[i].URI, "docker://docker.io/paketobuildpacks/"+bp+":") {
-					builderConfig.Buildpacks[i].URI = "docker://ghcr.io/knative/buildpacks/" + bp + ":" + entry.Group[0].Version
+					builderConfig.Buildpacks[i].URI = "docker://ghcr.io/jgnoguer/buildpacks/" + bp + ":" + entry.Group[0].Version
 				}
 			}
 		}
@@ -816,7 +816,7 @@ func dockerDaemonAuthStr(img string) (string, error) {
 	return base64.StdEncoding.EncodeToString(bs), nil
 }
 
-// Hack implementation of docker client returns NotFound for images ghcr.io/knative/buildpacks/*
+// Hack implementation of docker client returns NotFound for images ghcr.io/jgnoguer/buildpacks/*
 // For some reason moby/docker erroneously returns 500 HTTP code for these missing images.
 // Interestingly podman correctly returns 404 for same request.
 type hackDockerClient struct {
@@ -824,7 +824,7 @@ type hackDockerClient struct {
 }
 
 func (c hackDockerClient) ImagePull(ctx context.Context, ref string, options image.PullOptions) (io.ReadCloser, error) {
-	if strings.HasPrefix(ref, "ghcr.io/knative/buildpacks/") {
+	if strings.HasPrefix(ref, "ghcr.io/jgnoguer/buildpacks/") {
 		return nil, fmt.Errorf("this image is supposed to exist only in daemon: %w", errdefs.ErrNotFound)
 	}
 	return c.CommonAPIClient.ImagePull(ctx, ref, options)
@@ -1110,7 +1110,7 @@ func stackImageToMirror(ref string) string {
 	case strings.HasPrefix(lastPart, "build-"):
 		return "localhost:5000/" + lastPart
 	case strings.HasPrefix(lastPart, "run-"):
-		return "ghcr.io/knative/" + lastPart
+		return "ghcr.io/jgnoguer/" + lastPart
 	default:
 		panic("non reachable")
 	}

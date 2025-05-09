@@ -28,8 +28,8 @@ import (
 // DefaultName when no WithName option is provided to NewBuilder
 const DefaultName = builders.Pack
 
-var DefaultBaseBuilder = "ghcr.io/knative/builder-jammy-base:latest"
-var DefaultTinyBuilder = "ghcr.io/knative/builder-jammy-tiny:latest"
+var DefaultBaseBuilder = "ghcr.io/jgnoguer/builder-jammy-base:latest"
+var DefaultTinyBuilder = "ghcr.io/jgnoguer/builder-jammy-tiny:latest"
 
 var (
 	DefaultBuilderImages = map[string]string{
@@ -51,6 +51,7 @@ var (
 		"docker.io/paketobuildpacks/",
 		"gcr.io/buildpacks/",
 		"ghcr.io/knative/",
+		"ghcr.io/jgnoguer/",
 		"docker.io/heroku/",
 	}
 
